@@ -5,6 +5,7 @@ import (
 	"database/sql" // New import
 	"expvar"
 	"flag"
+	"fmt"
 	"log/slog"
 	"os"
 	"runtime"
@@ -17,10 +18,14 @@ import (
 	// compiler complaining that the package isn't being used.
 	"github.com/TobiasGleiter/go-greenlight/internal/data"
 	"github.com/TobiasGleiter/go-greenlight/internal/mailer"
+	"github.com/TobiasGleiter/go-greenlight/internal/vcs"
 	_ "github.com/lib/pq"
 )
 
-const version = "1.0.0"
+// Make version a variable (rather than a constant) and set its value to vcs.Version().
+var (
+	version = vcs.Version()
+)
 
 // Add maxOpenConns, maxIdleConns and maxIdleTime fields to hold the configuration
 // settings for the connection pool.
@@ -96,7 +101,17 @@ func main() {
 		return nil
 	})
 
+	// Create a new version boolean flag with the default value of false.
+	displayVersion := flag.Bool("version", false, "Display version and exit")
+
 	flag.Parse()
+
+	// If the version flag value is true, then print out the version number and
+	// immediately exit.
+	if *displayVersion {
+		fmt.Printf("Version:\t%s\n", version)
+		os.Exit(0)
+	}
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
 
