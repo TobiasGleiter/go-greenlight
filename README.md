@@ -27,3 +27,10 @@ For complete ownership of the code.
 - `go clean -modcache` to check that the project runs without cached modules
 
 Downsides: checked in packages and performance of CI/CD systems that clone the repository
+
+## Binaries
+
+- Check size of binaries `ls -l ./bin/name`
+- Reduce binary `-ldflags='-s'` (Strip Symbol tabled and DWARF but is then harder to debug)
+- List of dist: `go tool dist list` (set operating system eg.: `GOOS=linux GOARCH=amd64 go build {args}`)
+- Location of go cache for better perf: `go env GOCACHE` and `go clean -cache` for cleaning cache
