@@ -5,7 +5,7 @@
 - `pgrep -l api` to get the process ID of api
 - `pkill -SIGKILL api` which is not catchable and kills the app immediately
 
-## Requests using sCurl
+## Requests using Curl
 
 - `BODY='{"name": "Grace Smith", "email": "grace@example.com", "password": "invalid"}'`
 - `curl -d "$BODY" localhost:4000/v1/users`
@@ -34,6 +34,7 @@ Downsides: checked in packages and performance of CI/CD systems that clone the r
 - Reduce binary `-ldflags='-s'` (Strip Symbol tabled and DWARF but is then harder to debug)
 - List of dist: `go tool dist list` (set operating system eg.: `GOOS=linux GOARCH=amd64 go build {args}`)
 - Location of go cache for better perf: `go env GOCACHE` and `go clean -cache` for cleaning cache
+- Start binary: `./bin/api -db-dsn=postgres://...` (escape special characters like ?)
 
 ## Version Control
 
