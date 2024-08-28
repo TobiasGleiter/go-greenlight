@@ -39,3 +39,15 @@ Downsides: checked in packages and performance of CI/CD systems that clone the r
 ## Version Control
 
 - check version number of binary: `./bin/api -version` (is the same as the git version number)
+
+## DigitalOcean
+
+### Connect to Droplet
+
+- Connect to Droplet via `make production/connect`.
+
+### Future changes to the droplet configuration
+
+- Create a new bash: `remote/setup/02.sh`
+- `rsync -rP --delete ./remote/setup greenlight@ip:~`
+- `ssh -t greenlight@ip "sudo bash /home/greenlight/setup/02.sh"`
