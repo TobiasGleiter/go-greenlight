@@ -1,0 +1,4 @@
+http://139.59.132.36 {
+  respond /debug/* "Not Permitted" 403
+  reverse_proxy localhost:4000
+}

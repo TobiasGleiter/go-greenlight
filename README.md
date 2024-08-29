@@ -55,3 +55,4 @@ Downsides: checked in packages and performance of CI/CD systems that clone the r
 ### Additional Information
 
 - View logs of an bg service: `sudo journalctl -u api`
+- Open ssh tunnel between the droplet and local device: `ssh -L :9999:ip:4000 greenlight@ip`
