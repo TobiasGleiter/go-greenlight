@@ -51,3 +51,7 @@ Downsides: checked in packages and performance of CI/CD systems that clone the r
 - Create a new bash: `remote/setup/02.sh`
 - `rsync -rP --delete ./remote/setup greenlight@ip:~`
 - `ssh -t greenlight@ip "sudo bash /home/greenlight/setup/02.sh"`
+
+### Additional Information
+
+- View logs of an bg service: `sudo journalctl -u api`
